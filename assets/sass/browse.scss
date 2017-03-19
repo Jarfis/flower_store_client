@@ -1,0 +1,45 @@
+#browse{
+  
+  .browse_filter{
+
+    .flower_filter{
+      width:100%;
+    }
+  }
+  
+  .flower_list{
+
+    .flower_browse_tile{
+      height:350px;
+      padding:5px;
+
+      &.filtered{
+        display:none;
+      }
+
+      .tile_content_wrapper{
+        border: 1px solid #f8ab12;
+        background: #ffe6b3;
+        border-radius:6px;
+
+        .image_wrapper{
+          height:250px;
+          width:100%;
+          overflow:hidden;
+          text-align:center;
+          white-space: nowrap;
+          border-radius: 6px;
+
+          img{
+            max-width:100%;
+            vertical-align: middle;
+          }
+        }
+
+        .details_wrapper{
+          padding: 0 5px;
+        }
+      }
+    }
+  }
+}

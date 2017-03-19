@@ -1,0 +1,128 @@
+#checkout{
+  
+  #view_cart{
+
+    .flower_details_wrapper{
+      text-align: center;
+      border: 1px solid #f8ab12;
+      background: #ffe6b3;
+      border-radius: 6px;
+      height: 500px;
+      padding-top: 20px;
+
+      .flower_image{
+        display:inline-block;
+        min-height:375px;
+
+        img{
+          max-width:100%;
+        }
+      }
+
+      .flower_info{
+
+      }
+    }
+
+    .checkout-controls{
+      height:50px;
+
+      p{
+        font-size:24px;
+      }
+    }
+
+    .checkout_scroll{
+      height:450px;
+
+      .checkout_item{
+        padding:10px 0;
+
+        .row{
+          
+          div{
+            float:none;
+            display:inline-block;
+            vertical-align:middle;
+
+            p{
+              font-size:24px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #payment{
+
+    .available_cards{
+      margin-bottom:10px;
+
+      .card{
+        text-align:center;
+        background: #a6ecec;
+        border-radius:6px;
+        padding-top:10px;
+
+        &.chosen{
+          border: 1px solid #29a7a7;
+          background: #70d7d7;
+        }
+
+        img{
+          max-width:75%;
+        }
+      }
+
+      .new_card_button{
+        cursor:pointer;
+        height:77px;
+
+        i{
+          vertical-align:middle;
+        }
+      }
+    }
+
+    .available_contacts{
+      margin-bottom:10px;
+
+      .contact{
+        text-align:center;
+        background: #a6ecec;
+        border-radius:6px;
+
+        p{
+          margin-top:10px;
+          font-size:18px;
+        }
+
+        &.chosen{
+          border: 1px solid #29a7a7;
+          background: #70d7d7;
+        }
+      }
+
+      .new_contact_button{
+        cursor:pointer;
+        height:47px;
+
+        i{
+          vertical-align:middle;
+        }
+      }
+    }
+
+    .payment_controls{
+
+    }
+  }
+
+  #review{
+
+    .review_controls{
+
+    }
+  }
+}

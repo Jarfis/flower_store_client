@@ -1,0 +1,219 @@
+<div id="checkout" class="container-fluid">
+  <div id="view_cart" class="row" ng-show="co_ctrl.step === 0">
+    <div class="col-md-6">
+      <div class="flower_details_wrapper" ng-show="co_ctrl.chosen_flower">
+        <div class="flower_image">
+          <img ng-src="{{api_url + co_ctrl.chosen_flower.image.url}}">
+        </div>
+        <span class="clearfix"></span>
+        <div class="flower_info">
+          <p>{{co_ctrl.chosen_flower.name}}</p>
+          <p>{{co_ctrl.chosen_flower.description}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkout_controls row">
+        <div class="col-sm-8">
+          <p>Total: {{co_ctrl.getTotal() | currency}}</p>
+        </div>
+        <div class="col-sm-4">
+          <button class="btn btn-default" ng-click="co_ctrl.proceedToCards()">Proceed to payment</button>
+        </div>
+      </div>
+      <div class="checkout_scroll">
+        <div class="checkout_item" ng-repeat="(flower_id, orders_flower) in cart" ng-mouseenter="co_ctrl.chosen_flower = co_ctrl.the_flowers[flower_id]"><!--  ng-mouseleave="co_ctrl.chosen_flower = null"> -->
+          <div class="row">
+            <div class="col-sm-3">
+              <p>
+                {{co_ctrl.the_flowers[flower_id].name}}
+              </p>
+            </div>
+            <div class="incrementer">
+              <button class="btn btn-default" ng-click="co_ctrl.incrementItem(flower_id)"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></button>
+              <input type="number" ng-model="orders_flower.quantity" min="1" max="{{co_ctrl.the_flowers[flower_id].remaining}}">
+              <button class="btn btn-default" ng-click="co_ctrl.decrementItem(flower_id)"><i class="fa fa-minus fa-2x" aria-hidden="true"></i></button>
+            </div>
+            <div class="col-sm-2">
+              <p>
+                {{orders_flower.cost | currency}}
+              </p>
+            </div>
+            <div class="col-sm-1">
+              <button class="btn btn-default remove_from_cart" ng-click="co_ctrl.removeItem(flower_id)">Remove from cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="payment" ng-show="co_ctrl.step === 1">
+    <div class="row payment_controls">
+      <div class="col-md-4 col-md-offset-8">
+        <button class="btn btn-default" ng-click="co_ctrl.step = 0">Back</button>
+        <button class="btn btn-default" ng-click="co_ctrl.step = 2" ng-disabled="!(co_ctrl.chosen_card && co_ctrl.chosen_contact)">Next</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 card_col">
+        <div class="row available_cards">
+          <div class="col-md-2 card" ng-repeat="card in co_ctrl.the_cards" ng-click="co_ctrl.chosen_card = card" ng-class="{'chosen': co_ctrl.chosen_card.id == card.id}">
+            <img ng-src="{{co_ctrl.getCardLogo(card.brand)}}">
+            {{card.expiry_month + "/" + card.expiry_year}}
+          </div>
+          <div class="col-md-2 new_card_button" ng-click="co_ctrl.chosen_card = nil">
+            <i class="fa fa-plus fa-3x" aria-hidden="true"></i>
+            <span class="v_align_helper"></span>
+          </div>
+        </div>
+        <div class="row card_form_wrapper">
+          <div class="col-md-6">
+            <div class="row">
+              <div ng-show="co_ctrl.chosen_card" class="chosen_card_display">
+                <p>XXXX-XXXX-XXXX-{{co_ctrl.chosen_card.last4}}</p>
+              </div>
+              <form ng-submit="co_ctrl.addCard()" ng-hide="co_ctrl.chosen_card">
+                <div class="form-group">
+                  <input ng-model="co_ctrl.params.card.number" placeholder="Card Number" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <input ng-model="co_ctrl.params.card.cvc" placeholder="CVC" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <input ng-model="co_ctrl.params.card.exp_month" placeholder="mm" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <input ng-model="co_ctrl.params.card.exp_year" placeholder="yy" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-default" type="submit">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <div class="col-md-6 contact_col">
+        <div class="row available_contacts">
+          <div class="col-md-2 contact" ng-repeat="contact in co_ctrl.the_contacts" ng-click="co_ctrl.chosen_contact = contact" ng-class="{'chosen': co_ctrl.chosen_contact.id == contact.id}">
+            <p>{{contact.name}}</p>
+          </div>
+          <div class="col-md-2 new_contact_button" ng-click="co_ctrl.chosen_contact = nil">
+            <i class="fa fa-plus fa-3x" aria-hidden="true"></i>
+            <span class="v_align_helper"></span>
+          </div>
+        </div>
+        <div class="contact_wrapper">
+          <div class="chosen_contact_show" ng-show="co_ctrl.chosen_contact">
+            <p>{{co_ctrl.chosen_contact.address}}</p>
+            <p>{{co_ctrl.chosen_contact.city}}</p>
+            <p>{{co_ctrl.chosen_contact.province}}</p>
+            <p>{{co_ctrl.chosen_contact.postal_code}}</p>
+            <p>{{co_ctrl.chosen_contact.phone}}</p>
+          </div>
+          <form ng-hide="co_ctrl.chosen_contact" class="form-horizontal">
+            <div class="form-group">
+              <label class="col-md-2">name (label)</label>
+              <div class="col-md-9">
+                <input type="text" ng-model="co_ctrl.params.contact.name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2">address</label>
+              <div class="col-md-9">
+                <input type="text" ng-model="co_ctrl.params.contact.address">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2">city</label>
+              <div class="col-md-9">
+                <input type="text" ng-model="co_ctrl.params.contact.city">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2">province</label>
+              <div class="col-md-9">
+                <input type="text" ng-model="co_ctrl.params.contact.province">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2">postal_code</label>
+              <div class="col-md-9">
+                <input type="text" ng-model="co_ctrl.params.contact.postal_code">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2">phone</label>
+              <div class="col-md-9">
+                <input type="text" ng-model="co_ctrl.params.contact.phone">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-2 col-md-offset-2">
+                <button class="btn btn-default" ng-click="co_ctrl.addContact()">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="review" ng-show="co_ctrl.step === 2">
+    <div class="row review_controls">
+      <div class="col-md-4 col-md-offset-8">
+        <button class="btn btn-default" ng-click="co_ctrl.step = 1">Back</button>
+        <button class="btn btn-default" ng-click="co_ctrl.purchase()">Purchase</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 review_items">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-4">
+                <p>Name</p>
+              </div>
+              <div class="col-md-4">
+                <p>Quantity</p>
+              </div>
+              <div class="col-md-4">
+                <p>Sub-Total</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 review_item" ng-repeat="(flower_id, orders_flower) in cart">
+            <div class="row">
+              <div class="col-md-4">
+                <p>{{co_ctrl.the_flowers[flower_id].name}}</p>
+              </div>
+              <div class="col-md-4">
+                <p>{{orders_flower.quantity}}</p>
+              </div>
+              <div class="col-md-4">
+                <p>{{orders_flower.cost | currency}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-md-offset-8 review_total">
+            <p>Total: {{co_ctrl.getTotal() | currency}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 review_data">
+        <div class="row chosen_card">
+          <p><img ng-src="{{co_ctrl.getCardLogo(co_ctrl.chosen_card.brand)}}"> Ending with: {{co_ctrl.chosen_card.last4}}</p>
+        </div>
+        <div class="row chosen_contact">
+          <p>{{co_ctrl.chosen_contact.name}}</p>
+          <p>{{co_ctrl.chosen_contact.address}}</p>
+          <p>{{co_ctrl.chosen_contact.city}}</p>
+          <p>{{co_ctrl.chosen_contact.postal_code}}</p>
+          <p>{{co_ctrl.chosen_contact.province}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="conclusion" ng-show="co_ctrl.step === 3">
+    <p>Thanks for your purchase</p>
+  </div>
+</div>

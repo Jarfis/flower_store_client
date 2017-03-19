@@ -1,0 +1,7 @@
+#view_flower .flower_details .flower_controls .price_details {
+  display: inline-block;
+  vertical-align: top; }
+  #view_flower .flower_details .flower_controls .price_details p {
+    font-size: 24px; }
+  #view_flower .flower_details .flower_controls .price_details button {
+    font-size: 20px; }

@@ -1,0 +1,28 @@
+{
+  "name": "flower_store_client",
+  "authors": [
+    "Jarfis <jarfis@gmail.com>"
+  ],
+  "description": "Sample Project",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular-ui-router": "ui-router#^0.4.2",
+    "angular-bootstrap": "^2.5.0",
+    "oclazyload": "^1.1.0",
+    "ng-token-auth": "^0.0.29",
+    "font-awesome": "fontawesome#^4.7.0",
+    "angular-stripe": "^4.2.12",
+    "angular": "1.5.8"
+  }
+}

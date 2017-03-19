@@ -1,0 +1,34 @@
+<div id="browse" class="container-fluid">
+  <div class="row browse_filter">
+    <div class="col-md-12">
+      <!-- name filter -->
+      <input ng-model="bro_ctrl.filter" class="flower_filter form-control" placeholder="Search">
+    </div>
+  </div>
+  <div class="row flower_list">
+    <div class="col-md-2 flower_browse_tile" ng-repeat="flower in bro_ctrl.the_flowers" ng-click="bro_ctrl.viewFlower(flower.id)" ng-class="{'filtered': !bro_ctrl.filtered(flower.name)}">
+      <!-- 
+      +----------+
+      |+ -------+|
+      ||        ||
+      ||  img   ||
+      ||        ||
+      |+--------+|
+      +----------+
+      |   name   |
+      |   price  |
+      +----------+
+      -->
+      <div class="tile_content_wrapper">
+        <div class="image_wrapper">
+          <img ng-src="{{api_url + flower.image.url}}">
+          <span class="v_align_helper"></span>
+        </div>
+        <div class="details_wrapper">
+          <p>{{flower.name}}</p>
+          <p>{{flower.price | currency}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

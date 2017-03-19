@@ -1,0 +1,20 @@
+#login {
+  padding-top: 150px; }
+  #login .login_wrapper {
+    border: 1px solid #29a7a7;
+    background: #a6ecec;
+    border-radius: 6px; }
+    #login .login_wrapper .login_tabs_container {
+      border-bottom: 1px solid #29a7a7; }
+      #login .login_wrapper .login_tabs_container div {
+        cursor: pointer;
+        text-align: center; }
+        #login .login_wrapper .login_tabs_container div p {
+          margin-top: 10px;
+          font-weight: 600; }
+        #login .login_wrapper .login_tabs_container div:first-of-type {
+          border-right: 1px solid #29a7a7; }
+        #login .login_wrapper .login_tabs_container div.selected {
+          background: #70d7d7; }
+    #login .login_wrapper .login_form_container {
+      padding: 10px; }

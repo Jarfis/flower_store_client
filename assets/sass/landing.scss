@@ -1,0 +1,17 @@
+#landing{
+  
+  .landing_tile{
+    border: 1px solid #f8ab12;
+    background: #ffe6b3;
+    border-radius:6px;
+  }
+
+  .splash_wrapper{
+    height: 350px;
+    overflow-y: hidden;
+
+    img{
+      max-width:100%;
+    }
+  }
+}

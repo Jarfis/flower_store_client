@@ -1,0 +1,48 @@
+<!-- 
++-----------------------------+
+|+-------------+-------------+|
+||             |name         ||
+||             |             ||
+||             |description  ||
+||    img      |             ||
+||             |  +          ||
+||             | +-+         ||
+||             | |n| $*n  add||
+||             | +-+         ||
+||             |  -          ||
+|+-------------+-------------+|
++-----------------------------+
+-->
+<div id="view_flower" class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-sm-12 flower_image">
+      <img ng-src="{{api_url + vf_ctrl.the_flower.image.url}}">
+    </div>
+    <div class="col-md-6 col-sm-12 flower_details">
+      <div class="row">
+        <div class="col-md-12 flower_info">
+          <h3>{{vf_ctrl.the_flower.name}}</h3>
+          <p>{{vf_ctrl.the_flower.description}}</p>
+          <p>{{vf_ctrl.the_flower.price | currency}}</p>
+        </div>
+        <div class="col-md-12 flower_controls">
+          <div class="incrementer">
+            <button class="btn btn-default" ng-click="vf_ctrl.incrementQuantity()"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></button>
+            <input type="number" ng-model="vf_ctrl.quantity" min="1" max="{{vf_ctrl.the_flower.remaining}}">
+            <button class="btn btn-default" ng-click="vf_ctrl.decrementQuantity()"><i class="fa fa-minus fa-2x" aria-hidden="true"></i></button>
+          </div>
+          <div class="price_details">
+            <div>
+              <p>{{vf_ctrl.the_flower.price * vf_ctrl.quantity | currency}}</p>
+              <!-- <label>{{vf_ctrl.the_flower.remaining - vf_ctrl.quantity}}</label> -->
+            </div>
+            <div>
+              <button class="btn btn-default" ng-click="vf_ctrl.addToCart()" ng-show="user.signedIn">Add to cart</button>
+              <button class="btn btn-default" ng-click="$state.go('login')" ng-hide="user.signedIn">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

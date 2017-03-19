@@ -1,0 +1,41 @@
+#login{
+  padding-top:150px;
+
+  .login_wrapper{
+    border: 1px solid #29a7a7;
+    background: #a6ecec;
+    border-radius:6px;
+
+    .login_tabs_container{
+      border-bottom: 1px solid #29a7a7;
+
+      div{
+        cursor: pointer;
+        text-align: center;
+
+        p{
+          margin-top: 10px;
+          font-weight: 600;
+        }
+
+        &:first-of-type{
+          border-right: 1px solid #29a7a7;
+        }
+
+        &.selected{
+          background: #70d7d7;
+        }
+      }
+    }
+
+    .login_form_container{
+      padding: 10px;
+
+      .sign_in_form{
+
+      }
+    }
+  }
+  
+  
+}

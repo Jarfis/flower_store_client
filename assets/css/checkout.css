@@ -1,0 +1,64 @@
+#checkout #view_cart .flower_details_wrapper {
+  text-align: center;
+  border: 1px solid #f8ab12;
+  background: #ffe6b3;
+  border-radius: 6px;
+  height: 500px;
+  padding-top: 20px; }
+  #checkout #view_cart .flower_details_wrapper .flower_image {
+    display: inline-block;
+    min-height: 375px; }
+    #checkout #view_cart .flower_details_wrapper .flower_image img {
+      max-width: 100%; }
+
+#checkout #view_cart .checkout-controls {
+  height: 50px; }
+  #checkout #view_cart .checkout-controls p {
+    font-size: 24px; }
+
+#checkout #view_cart .checkout_scroll {
+  height: 450px; }
+  #checkout #view_cart .checkout_scroll .checkout_item {
+    padding: 10px 0; }
+    #checkout #view_cart .checkout_scroll .checkout_item .row div {
+      float: none;
+      display: inline-block;
+      vertical-align: middle; }
+      #checkout #view_cart .checkout_scroll .checkout_item .row div p {
+        font-size: 24px; }
+
+#checkout #payment .available_cards {
+  margin-bottom: 10px; }
+  #checkout #payment .available_cards .card {
+    text-align: center;
+    background: #a6ecec;
+    border-radius: 6px;
+    padding-top: 10px; }
+    #checkout #payment .available_cards .card.chosen {
+      border: 1px solid #29a7a7;
+      background: #70d7d7; }
+    #checkout #payment .available_cards .card img {
+      max-width: 75%; }
+  #checkout #payment .available_cards .new_card_button {
+    cursor: pointer;
+    height: 77px; }
+    #checkout #payment .available_cards .new_card_button i {
+      vertical-align: middle; }
+
+#checkout #payment .available_contacts {
+  margin-bottom: 10px; }
+  #checkout #payment .available_contacts .contact {
+    text-align: center;
+    background: #a6ecec;
+    border-radius: 6px; }
+    #checkout #payment .available_contacts .contact p {
+      margin-top: 10px;
+      font-size: 18px; }
+    #checkout #payment .available_contacts .contact.chosen {
+      border: 1px solid #29a7a7;
+      background: #70d7d7; }
+  #checkout #payment .available_contacts .new_contact_button {
+    cursor: pointer;
+    height: 47px; }
+    #checkout #payment .available_contacts .new_contact_button i {
+      vertical-align: middle; }
