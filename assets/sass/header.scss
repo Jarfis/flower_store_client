@@ -5,13 +5,16 @@
   margin-bottom: 20px;
   margin-top:5px;
 
+  span{
+
+    .header_link{
+      text-align:right;
+    }
+  }
+
   .header_link{
     color: #0a9595;
     cursor: pointer;
-
-    &:last-of-type{
-      text-align:right;
-    }
 
     &.header_title{
       color:#a6ecec;

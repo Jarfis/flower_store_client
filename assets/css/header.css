@@ -3,11 +3,11 @@
   border-radius: 6px;
   margin-bottom: 20px;
   margin-top: 5px; }
+  #header span .header_link {
+    text-align: right; }
   #header .header_link {
     color: #0a9595;
     cursor: pointer; }
-    #header .header_link:last-of-type {
-      text-align: right; }
     #header .header_link.header_title {
       color: #a6ecec; }
     #header .header_link p {

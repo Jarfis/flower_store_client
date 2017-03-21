@@ -28,6 +28,7 @@ angular.module("flowerStore").service("UserService", function($http, $q, $timeou
     .then(
       function(res){
         console.log("register user", res);
+        serv.login(email, pw);
         return res;
       }
     );

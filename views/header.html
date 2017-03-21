@@ -10,8 +10,9 @@
     <div class="header_link col-md-2 header_title" ng-click="$state.go('landing')"><h3>Flower Store</h3></div>
     <div class="header_link col-md-1" ng-click="$state.go('browse')"><p>Browse</p></div>
     <span ng-show="user.signedIn">
-      <div class="header_link col-md-1 col-md-offset-8" ng-click="$state.go('checkout')"><p>Cart</p></div>
+      <div class="header_link col-md-1 col-md-offset-7" ng-click="$state.go('checkout')"><p>Cart</p></div>
       <!-- <div class="header_link col-md-2" ng-click="$state.go('settings')"><p>Settings</p></div> -->
+      <div class="header_link col-md-1" ng-click="h_ctrl.logout()"><p>Logout</p></div>
     </span>
     <span ng-hide="user.signedIn">
       <div class="header_link col-md-2 col-md-offset-7" ng-click="$state.go('login')"><p>Sign In/Sign Up</p></div>
